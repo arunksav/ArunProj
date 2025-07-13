@@ -7,7 +7,7 @@ on:
 
 jobs:
   deploy-nginx:
-    runs-on: github-runner
+    runs-on: self-hosted
 
     steps:
     - name: Checkout code
