@@ -7,7 +7,7 @@ on:
 
 jobs:
   deploy-nginx:
-    runs-on: my-runner
+    runs-on: github-runner
 
     steps:
     - name: Checkout code
