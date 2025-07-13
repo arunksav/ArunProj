@@ -7,7 +7,7 @@ on:
 
 jobs:
   deploy-nginx:
-    runs-on: github-runner  # Ensure this runner is correctly configured
+    runs-on: github-runner
 
     steps:
     - name: Checkout code
