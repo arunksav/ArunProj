@@ -1,0 +1,27 @@
+name: Deploy Nginx
+
+on:
+  push:
+    branches:
+      - main
+
+jobs:
+  deploy-nginx:
+    runs-on: my-runner
+
+    steps:
+    - name: Checkout code
+      uses: actions/checkout@v2
+
+    - name: Deploy Nginx to WSL
+      run: |
+        ssh -o StrictHostKeyChecking=no root@172.31.121.27 "
+        docker pull nginx:latest &&
+        docker run -d -p 80:80 --name my-nginx nginx:latest
+        "
+
+    - name: Verify Nginx Deployment
+      run: |
+        ssh -o StrictHostKeyChecking=no root@172.31.121.27 "
+        docker ps | grep my-nginx
+        "
